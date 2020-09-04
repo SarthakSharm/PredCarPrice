@@ -56,20 +56,23 @@ df["Engine"] = df.apply(setengine, axis=1)
 df['Engine'].fillna(df['Engine'].mean(), inplace=True)
 
 
-"""------------------ ENDED HERE-------------------"""
-
 
 """    POWER     """
 #Removing 
 def setpower(daf):
     d = str(daf.Power).split(" ")[0]
     if d == "null":
-        return 0.00
+        pass
     else:
         return float(d)
 
 df["Power"] = df.apply(setpower, axis=1)
 
+df['Power'].fillna(df['Power'].median(), inplace=True)
+
+"""     SEATS      """
+
+df=df.dropna()
 
 
 
